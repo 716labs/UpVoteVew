@@ -11,26 +11,12 @@
 
 @implementation UpVoteView
 
-- (id)initWithFrameAndVotes:(CGRect)frame objectId:(NSString *)objectId votes:(int)votes didUserVote:(BOOL)didUserVote
+-(id)initWithFrameAndVotes:(CGRect)frame votes:(int)votes didUserVote:(BOOL)voted
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.pitchObjectId = objectId;
         self.numberOfVotes = votes;
-        self.userVoted = didUserVote;
-        self.votingEnabled = YES;
-        [self baseInit];
-    }
-    return self;
-}
-
--(id)initWithFrameAndVotes:(CGRect)frame objectId:(NSString *)objectId votes:(int)votes didUserVote:(BOOL)didUserVote enableVoteing:(BOOL)enableVoteing {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.pitchObjectId = objectId;
-        self.numberOfVotes = votes;
-        self.userVoted = didUserVote;
-        self.votingEnabled = enableVoteing;
+        self.voted = voted;
         [self baseInit];
     }
     return self;
@@ -47,41 +33,34 @@
     [self.votesLabel setNumberOfLines:0];
     [self.votesLabel setTextAlignment:NSTextAlignmentCenter];
     [self.votesLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    //[self.votesLabel setBackgroundColor:[UIColor colorWithWhite:0.800 alpha:1.000]];
-    [self.votesLabel setBackgroundColor:[UIColor whiteColor]];
+
+    [self.votesLabel setBackgroundColor:[UIColor lightGrayColor]];
     [self.votesLabel setText:[NSString stringWithFormat:@"▲\n%d",self.numberOfVotes]];
-    if (self.userVoted) {
-        //[self.votesLabel setTextColor:[UIColor redColor]];
-        [self.votesLabel setTextColor:[UIColor colorWithRed:0.275 green:0.604 blue:0.915 alpha:1]];
+
+    if (self.voted) {
+        [self.votesLabel setTextColor:[UIColor redColor]];
     } else {
-        [self.votesLabel setTextColor:[UIColor lightGrayColor]];
+        [self.votesLabel setTextColor:[UIColor whiteColor]];
     }
+    
     [self addSubview:self.votesLabel];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    if (self.votingEnabled) {
-        if ([PFUser currentUser]) {
-            if (self.userVoted) {
-                self.numberOfVotes--;
-                self.userVoted = NO;
-                [self.votesLabel setTextColor:[UIColor lightGrayColor]];
-            } else {
-                self.numberOfVotes++;
-                self.userVoted = YES;
-                //[self.votesLabel setTextColor:[UIColor redColor]];
-                [self.votesLabel setTextColor:[UIColor colorWithRed:0.275 green:0.604 blue:0.915 alpha:1]];
-            }
-            [self.votesLabel setText:[NSString stringWithFormat:@"▲\n%d",self.numberOfVotes]];
-            
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [appDelegate addUpVote:self.pitchObjectId vote:self.userVoted];
-            
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginRequired" object:nil];
-        }
+    if (self.voted) {
+        self.numberOfVotes--;
+        self.voted = NO;
+        [self.votesLabel setTextColor:[UIColor whiteColor]];
+    } else {
+        self.numberOfVotes++;
+        self.voted = YES;
+
+        [self.votesLabel setTextColor:[UIColor redColor]];
     }
+    [self.votesLabel setText:[NSString stringWithFormat:@"▲\n%d",self.numberOfVotes]];
+    
+            
 }
 
 @end

@@ -14,6 +14,7 @@
 		DC84F8331B5BDE9300A354FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC84F8321B5BDE9300A354FA /* Images.xcassets */; };
 		DC84F8361B5BDE9300A354FA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC84F8341B5BDE9300A354FA /* LaunchScreen.xib */; };
 		DC84F8421B5BDE9300A354FA /* UpVoteViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC84F8411B5BDE9300A354FA /* UpVoteViewTestTests.m */; };
+		DC84F84E1B5BDF5200A354FA /* UpVoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC84F84D1B5BDF5200A354FA /* UpVoteView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		DC84F83B1B5BDE9300A354FA /* UpVoteViewTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UpVoteViewTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC84F8401B5BDE9300A354FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC84F8411B5BDE9300A354FA /* UpVoteViewTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpVoteViewTestTests.m; sourceTree = "<group>"; };
+		DC84F84C1B5BDF5200A354FA /* UpVoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpVoteView.h; sourceTree = "<group>"; };
+		DC84F84D1B5BDF5200A354FA /* UpVoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpVoteView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 		DC84F8191B5BDE9300A354FA = {
 			isa = PBXGroup;
 			children = (
+				DC84F84B1B5BDF5200A354FA /* UpVoteView */,
 				DC84F8241B5BDE9300A354FA /* UpVoteViewTest */,
 				DC84F83E1B5BDE9300A354FA /* UpVoteViewTestTests */,
 				DC84F8231B5BDE9300A354FA /* Products */,
@@ -117,6 +121,16 @@
 				DC84F8401B5BDE9300A354FA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC84F84B1B5BDF5200A354FA /* UpVoteView */ = {
+			isa = PBXGroup;
+			children = (
+				DC84F84C1B5BDF5200A354FA /* UpVoteView.h */,
+				DC84F84D1B5BDF5200A354FA /* UpVoteView.m */,
+			);
+			name = UpVoteView;
+			path = ../UpVoteView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC84F82E1B5BDE9300A354FA /* ViewController.m in Sources */,
+				DC84F84E1B5BDF5200A354FA /* UpVoteView.m in Sources */,
 				DC84F82B1B5BDE9300A354FA /* AppDelegate.m in Sources */,
 				DC84F8281B5BDE9300A354FA /* main.m in Sources */,
 			);
